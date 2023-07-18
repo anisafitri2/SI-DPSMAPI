@@ -28,10 +28,9 @@ class PengurusDataTable extends DataTable
             })
             ->editColumn('action', function ($query) {
                 $user = auth()->user();
-                $button = '';
-                $button .= '<a href="' . route('pengurus.edit', $query->id) . '" type="button" class="m-1 btn btn-sm btn-warning">Edit</a>';
-                $button .= '<button type="button" data-type="delete" data-id=' . $query->id . ' class="m-1 btn btn-sm btn-danger action">Delete</button>';
-                return $button;
+                $edit = '<a href="' . route('pengurus.edit', $query->id) . '" type="button" class="m-1 btn btn-sm btn-warning">Edit</a>';
+                $delete = '<button type="button" data-type="delete" data-id=' . $query->id . ' class="m-1 btn btn-sm btn-danger action">Delete</button>';
+                return '<div class="btn-group" role="group" aria-label="Basic example">' . $edit . $delete . '</div>';
 
             })
             ->addColumn('action', 'pengurus.action')
